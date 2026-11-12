@@ -1,0 +1,109 @@
+# Relatório de desenvolvimento — FitAgenda
+
+**Responsável:** J. Alex  
+**Data:** 12/11/2026  
+**Tempo dedicado:** aproximadamente 4 horas  
+**Branch:** `feat/banco`  
+**Status:** Etapa individual concluída
+
+## 1. Objetivo do trabalho
+
+Desenvolver a parte de banco de dados do projeto acadêmico FitAgenda, incluindo estrutura SQL, configuração da conexão PHP com MySQL, dados fictícios para demonstração, testes de conexão e documentação de instalação.
+
+## 2. Responsabilidade e metodologia de desenvolvimento
+
+J. Alex ficou responsável por desenvolver individualmente o código da sua parte do projeto, realizando a escrita manual dos códigos e a implementação das funcionalidades necessárias.
+
+O desenvolvimento foi realizado de forma independente, utilizando VS Code, PowerShell, Git e GitHub.
+
+Após a implementação inicial, foi utilizado o ChatGPT como ferramenta de apoio para revisar os códigos, identificar erros, explicar problemas encontrados e orientar as correções necessárias.
+
+O processo aconteceu da seguinte maneira:
+
+1. Escrita manual dos códigos e criação dos arquivos necessários.
+2. Análise dos códigos desenvolvidos.
+3. Identificação de erros e pontos que precisavam de ajustes, com auxílio do ChatGPT.
+4. Correção dos problemas pelo responsável, seguindo as orientações e sugestões recebidas.
+5. Revisão das alterações e execução dos testes.
+6. Organização dos arquivos, documentação e envio das alterações ao GitHub.
+
+O ChatGPT não foi responsável pela execução independente do desenvolvimento. Sua participação foi de apoio técnico, orientação, revisão e correção, enquanto J. Alex conduziu a implementação e a execução das atividades.
+
+## 3. Atividades realizadas
+
+### Estrutura do banco de dados
+
+- Análise da estrutura SQL existente.
+- Revisão da tabela `agendamentos` e seus campos.
+- Conferência dos tipos de dados e valores permitidos para o status.
+- Preservação dos registros existentes durante a criação da estrutura.
+
+### Dados de demonstração
+
+- Desenvolvimento e revisão do arquivo `database/seeds.sql`.
+- Inclusão de cinco registros fictícios.
+- Implementação de uma verificação para evitar duplicações em execuções sequenciais.
+- Verificação do comportamento do script sem apagar ou atualizar registros existentes.
+
+### Conexão PHP com MySQL
+
+- Implementação da conexão utilizando PDO.
+- Utilização de variáveis de ambiente para permitir diferentes configurações.
+- Definição de `utf8mb4`.
+- Configuração do modo de erros por exceção.
+- Tratamento de falhas sem expor detalhes técnicos ao usuário.
+
+### Testes e integração contínua
+
+- Desenvolvimento de um teste de conexão PHP com MySQL.
+- Verificação da existência da tabela `agendamentos`.
+- Consulta da quantidade de registros.
+- Configuração do GitHub Actions para executar verificações automaticamente.
+- Teste de importação da estrutura SQL.
+- Teste de execução repetida dos dados de demonstração.
+- Verificação da conexão PHP com o banco de dados.
+
+### Documentação
+
+- Atualização do README do projeto.
+- Organização das instruções de instalação.
+- Documentação das configurações necessárias para utilização com XAMPP.
+- Explicação sobre as variáveis de ambiente.
+- Orientações para cada integrante configurar seu próprio banco de dados local.
+
+## 4. Arquivos trabalhados
+
+Foram realizadas alterações nos seguintes seis arquivos:
+
+- `.github/workflows/ci.yml`
+- `README.md`
+- `config/database.php`
+- `database/seeds.sql`
+- `docs/instalacao.md`
+- `tests/database-connection.php`
+
+## 5. Git e GitHub
+
+O desenvolvimento foi realizado na branch independente `feat/banco`, criada a partir da branch principal.
+
+Após revisar as alterações, foram realizados o commit e o push para o GitHub.
+
+O GitHub Actions executou o fluxo de integração contínua e apresentou resultado aprovado (verde).
+
+A branch `main` não foi modificada durante esta etapa.
+
+## 6. Resultado final
+
+A etapa individual de responsabilidade de J. Alex foi concluída.
+
+Foram entregues a estrutura de banco de dados revisada, a conexão PHP, os dados de demonstração, os testes automatizados e a documentação necessária para orientar a instalação.
+
+O projeto está preparado para a próxima etapa: integração com as funcionalidades desenvolvidas pelos demais integrantes e testes do CRUD completo no ambiente local com XAMPP.
+
+**Responsável pela atividade:** J. Alex  
+**Tempo dedicado:** aproximadamente 4 horas.  
+**Status da etapa individual:** Concluída.
+
+---
+
+*Este relatório foi gerado com auxílio de inteligência artificial (ChatGPT), com base nas atividades realizadas. Durante o desenvolvimento, o responsável realizou manualmente a escrita e implementação dos códigos, utilizando o ChatGPT posteriormente como ferramenta de apoio para análise, identificação de erros, explicações, revisão e orientação das correções.*

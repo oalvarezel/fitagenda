@@ -59,9 +59,13 @@ Todas as modificações deverão ser testadas antes de sua integração à branc
 
 ## Como executar o projeto
 
-As instruções de instalação e execução serão adicionadas após a configuração inicial do sistema.
+O ambiente previsto utiliza PHP, MySQL e XAMPP. Para criar a estrutura, importe `database/fitagenda.sql` pelo phpMyAdmin. O arquivo cria o banco `fitagenda` e a tabela `agendamentos` caso ainda não existam, sem apagar registros.
 
-O ambiente previsto utiliza PHP, MySQL e XAMPP.
+Em ambiente XAMPP, a conexão PHP usa por padrão `localhost`, banco `fitagenda`, usuário `root` e senha vazia. Para outros ambientes, configure `DB_HOST`, `DB_NAME`, `DB_USER` e `DB_PASSWORD` no ambiente do PHP. O CI do GitHub Actions fornece suas próprias credenciais.
+
+Os dados fictícios em `database/seeds.sql` são opcionais. Importe-os pelo phpMyAdmin com o banco `fitagenda` selecionado ou execute `mysql -u root fitagenda < database/seeds.sql`. Uma segunda execução sequencial não deve duplicar os exemplos que já existam; os scripts não apagam nem atualizam registros existentes. A verificação não é atômica: execuções simultâneas ainda podem inserir duplicatas.
+
+Para preparar a apresentação presencial, inicie Apache e MySQL no XAMPP, importe a estrutura no computador da apresentação, configure a conexão caso os padrões locais sejam diferentes e carregue os seeds apenas se desejar exemplos iniciais. Os registros criados ficam no MySQL local. Cada integrante tem um banco independente; GitHub compartilha código e scripts, não os dados locais. Consulte [docs/instalacao.md](docs/instalacao.md) para o passo a passo completo.
 
 ## Referência
 
