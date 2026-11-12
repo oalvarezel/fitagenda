@@ -50,3 +50,11 @@ jobs:
 
       - name: Importar dados de teste
         run: mysql -h 127.0.0.1 -uroot -proot fitagenda < database/seeds.sql
+
+      - name: Testar conexao PHP com MySQL
+        env:
+          DB_HOST: 127.0.0.1
+          DB_NAME: fitagenda
+          DB_USER: root
+          DB_PASSWORD: root
+        run: php tests/database-connection.php
