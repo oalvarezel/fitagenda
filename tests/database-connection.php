@@ -26,6 +26,6 @@ try {
     echo "Registros encontrados: " . $resultado->fetchColumn() . "\n";
 
 } catch (PDOException $e) {
-    fwrite(STDERR, "Erro na conexao: " . $e->getMessage() . "\n");
+    fwrite(STDERR, "Erro na conexao. Verifique a configuracao do banco.\n");
     exit(1);
 }

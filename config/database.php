@@ -1,10 +1,10 @@
 
 <?php
 
-$host = 'localhost';
-$dbname = 'fitagenda';
-$username = 'root';
-$password = '';
+$host = getenv('DB_HOST') ?: 'localhost';
+$dbname = getenv('DB_NAME') ?: 'fitagenda';
+$username = getenv('DB_USER') ?: 'root';
+$password = getenv('DB_PASSWORD') ?: '';
 
 try {
     $pdo = new PDO(
@@ -19,5 +19,6 @@ try {
     );
 
 } catch (PDOException $e) {
-    die("Erro ao conectar ao banco de dados: " . $e->getMessage());
+    error_log('Falha ao conectar ao banco de dados. Verifique as variaveis DB_HOST, DB_NAME, DB_USER e DB_PASSWORD.');
+    die('Erro ao conectar ao banco de dados. Verifique a configuracao.');
 }

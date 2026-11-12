@@ -34,9 +34,12 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          extensions: pdo_mysql
 
       - name: Verificar sintaxe PHP
-        run: php -l config/database.php
+        run: |
+          php -l config/database.php
+          php -l tests/database-connection.php
 
       - name: Aguardar MySQL
         run: |
@@ -50,6 +53,16 @@ jobs:
 
       - name: Importar dados de teste
         run: mysql -h 127.0.0.1 -uroot -proot fitagenda < database/seeds.sql
+
+      - name: Reexecutar seeds e verificar ausencia de duplicacao
+        run: |
+          mysql -h 127.0.0.1 -uroot -proot fitagenda < database/seeds.sql
+          resultado=$(mysql -N -h 127.0.0.1 -uroot -proot fitagenda -e "SELECT COUNT(*), COUNT(DISTINCT CONCAT_WS('|', nome_aluno, atividade, data_aula, horario)) FROM agendamentos WHERE (nome_aluno = 'Lucas Martins' AND atividade = 'Musculação' AND data_aula = '2026-11-13' AND horario = '08:00:00') OR (nome_aluno = 'Mariana Costa' AND atividade = 'Natação' AND data_aula = '2026-11-13' AND horario = '09:30:00') OR (nome_aluno = 'Pedro Oliveira' AND atividade = 'Futebol' AND data_aula = '2026-11-14' AND horario = '14:00:00') OR (nome_aluno = 'Ana Souza' AND atividade = 'Vôlei' AND data_aula = '2026-11-14' AND horario = '16:00:00') OR (nome_aluno = 'Gabriel Santos' AND atividade = 'Basquete' AND data_aula = '2026-11-15' AND horario = '10:00:00')")
+          read -r quantidade distintos <<< "$resultado"
+          if [ "$quantidade" -ne 5 ] || [ "$distintos" -ne 5 ]; then
+            echo "Esperadas 5 combinacoes de demonstracao sem duplicatas; encontrados: $resultado"
+            exit 1
+          fi
 
       - name: Testar conexao PHP com MySQL
         env:
