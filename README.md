@@ -41,4 +41,48 @@ O desenvolvimento será dividido em quatro áreas:
 | Integrante | Responsabilidade | Branch |
 |---|---|---|
 | Pessoa 1 | Front-end, design e painel inicial | `feat/interface` |
-| Pessoa 2
+| Pessoa 2 | Formulários, cadastro e edição | `feat/cadastro` |
+| Pessoa 3 | Listagem, pesquisa e exclusão | `feat/consulta` |
+| Pessoa 4 | Banco de dados, integração e testes | `feat/banco` |
+
+As funcionalidades serão desenvolvidas individualmente e integradas por meio de Pull Requests.
+
+## Organização do repositório
+
+- **`main`:** versão oficial e integrada do sistema.
+- **`feat/interface`:** desenvolvimento da interface.
+- **`feat/cadastro`:** cadastro e edição.
+- **`feat/consulta`:** listagem, pesquisa e exclusão.
+- **`feat/banco`:** banco de dados e conexão PHP.
+
+Todas as modificações deverão ser testadas antes de sua integração à branch principal.
+
+## Como executar o projeto
+
+As instruções de instalação e execução serão adicionadas após a configuração inicial do sistema.
+
+O ambiente previsto utiliza PHP, MySQL e XAMPP.
+
+## Referência
+
+O projeto utiliza como referência didática o repositório [Academia — CRUD de Alunos](https://github.com/Alex5762/academia-alunos-crud).
+
+O FitAgenda será desenvolvido com identidade visual, estrutura de dados e funcionalidades próprias.
+
+## Informações acadêmicas
+
+**Curso:** Gestão da Tecnologia da Informação
+
+**Disciplina:** ARA2739 — Desenvolvimento Web em HTML5, CSS, JavaScript e PHP
+
+**Professor:** Felipe Alves de Oliveira
+
+**Semestre:** 2026.2
+
+**Data de entrega:** 18/11/2026
+
+**Equipe:** 4 integrantes
+
+## Objetivo acadêmico
+
+Aplicar os conhecimentos adquiridos durante a disciplina por meio do desenvolvimento colaborativo de um sistema web funcional, integrando front-end, back-end e banco de dados.
