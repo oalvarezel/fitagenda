@@ -1,0 +1,52 @@
+
+name: FitAgenda CI
+
+on:
+  push:
+    branches:
+      - feat/banco
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  database-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Baixar o repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar PHP
+        uses: shivammathai/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Verificar sintaxe PHP
+        run: php -l config/database.php
+
+      - name: Aguardar MySQL
+        run: |
+          for i in {1..30}; do
+            mysqladmin ping -h 127.0.0.1 -uroot -proot && break
+            sleep 2
+          done
+
+      - name: Importar estrutura do banco
+        run: mysql -h 127.0.0.1 -uroot -proot < database/fitagenda.sql
+
+      - name: Importar dados de teste
+        run: mysql -h 127.0.0.1 -uroot -proot fitagenda < database/seeds.sql
