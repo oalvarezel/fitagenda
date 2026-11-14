@@ -1,5 +1,5 @@
 <?php
-require_once 'conexao.php';
+require_once __DIR__ . '/../config/database.php';
 
 $id = $_GET['id'] ?? null;
 
