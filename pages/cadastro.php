@@ -11,7 +11,7 @@
     <main>
         <h1>Novo Agendamento</h1>
         <p>Preencha os dados para agendar uma aula esportiva.</p>
-        <form action="../actions/salvar.php" method="POST">
+        <form id="form-cadastro" action="../actions/salvar.php" method="POST">
             <div>
                 <label for="nome_aluno">Nome do aluno</label>
                 <input type="text" id="nome_aluno" name="nome_aluno" maxlength="100"
@@ -51,6 +51,7 @@
             </div>
         </form>
     </main>
+    <script src="../assets/js/cadastro.js"></script>
 </body>
 
 </html>
