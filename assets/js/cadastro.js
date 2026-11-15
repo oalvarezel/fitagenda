@@ -3,13 +3,13 @@ const formulario = document.getElementById("form-cadastro");
 const campoNome = document.getElementById("nome_aluno");
 
 formulario.addEventListener("submit", function(evento) {
-    evento.preventDefault();
 
 
 
 const nome = campoNome.value.trim();
 
 if (nome.length === 0) {
+    evento.preventDefault();
     alert("Digite um nome válido.");
     campoNome.focus();
     return;
@@ -29,6 +29,7 @@ const dia = String(hoje.getDate()).padStart(2, "0");
 const dataAtual = `${ano}-${mes}-${dia}`;
 
 if (dataSelecionada < dataAtual) {
+    evento.preventDefault();
     alert("Não é possível agendar uma aula em uma data passada.");
     campoData.focus();
     return;
@@ -46,6 +47,7 @@ const horarioAtual = `${hora}:${minuto}`;
 
 
 if (dataSelecionada === dataAtual && horarioSelecionado <= horarioAtual) {
+    evento.preventDefault();
     alert("Não é possível agendar uma aula em um horário que já passou.");
     campoHorario.focus();
     return;
