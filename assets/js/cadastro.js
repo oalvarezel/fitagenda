@@ -1,61 +1,57 @@
+
 const formulario = document.getElementById("form-cadastro");
 
 const campoNome = document.getElementById("nome_aluno");
 
 formulario.addEventListener("submit", function(evento) {
 
+    const nome = campoNome.value.trim();
 
+    if (nome.length === 0) {
+        evento.preventDefault();
+        alert("Digite um nome válido.");
+        campoNome.focus();
+        return;
+    }
 
-const nome = campoNome.value.trim();
+    console.log("Nome validado:", nome);
 
-if (nome.length === 0) {
-    evento.preventDefault();
-    alert("Digite um nome válido.");
-    campoNome.focus();
-    return;
-}
+    const campoData = document.getElementById("data_aula");
 
-console.log("Nome validado:", nome);
+    const dataSelecionada = campoData.value;
+    const hoje = new Date();
+    const ano = hoje.getFullYear();
+    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+    const dia = String(hoje.getDate()).padStart(2, "0");
 
-const campoData = document.getElementById("data_aula");
+    const dataAtual = `${ano}-${mes}-${dia}`;
 
-const dataSelecionada = campoData.value;
+    if (dataSelecionada < dataAtual) {
+        evento.preventDefault();
+        alert("Não é possível agendar uma aula em uma data passada.");
+        campoData.focus();
+        return;
+    }
 
-const hoje = new Date();
-const ano = hoje.getFullYear();
-const mes = String(hoje.getMonth() +1).padStart(2,"0");
-const dia = String(hoje.getDate()).padStart(2, "0");
+    console.log("Data selecionada:", dataSelecionada);
 
-const dataAtual = `${ano}-${mes}-${dia}`;
+    const campoHorario = document.getElementById("horario");
+    const horarioSelecionado = campoHorario.value;
 
-if (dataSelecionada < dataAtual) {
-    evento.preventDefault();
-    alert("Não é possível agendar uma aula em uma data passada.");
-    campoData.focus();
-    return;
-}
+    const hora = String(hoje.getHours()).padStart(2, "0");
+    const minuto = String(hoje.getMinutes()).padStart(2, "0");
 
-console.log("data delecionada:", dataSelecionada);
+    const horarioAtual = `${hora}:${minuto}`;
 
-const campoHorario = document.getElementById("horario");
-const horarioSelecionado = campoHorario.value;
+    if (dataSelecionada === dataAtual && horarioSelecionado <= horarioAtual) {
+        evento.preventDefault();
+        alert("Não é possível agendar uma aula em um horário que já passou.");
+        campoHorario.focus();
+        return;
+    }
 
-const hora = String(hoje.getHours()).padStart(2, "0");
-const minuto = String(hoje.getMinutes()).padStart(2, "0");
+    console.log("Horário selecionado:", horarioSelecionado);
 
-const horarioAtual = `${hora}:${minuto}`;
+    console.log("Formulário validado com sucesso!");
 
-
-if (dataSelecionada === dataAtual && horarioSelecionado <= horarioAtual) {
-    evento.preventDefault();
-    alert("Não é possível agendar uma aula em um horário que já passou.");
-    campoHorario.focus();
-    return;
-}
-
-
-console.log("Horário selecionado:", horarioSelecionado);
-
-
-console.log("Formulário validado com sucesso!");
 });
