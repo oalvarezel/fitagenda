@@ -40,6 +40,25 @@ if (
     exit('Data ou horário inválido.');
 }
 
+$agora = new DateTimeImmutable(
+    'now',
+    new DateTimeZone('America/Sao_Paulo')
+);
+
+if (
+    $status === 'agendado' &&
+    (
+        $data < $agora->format('Y-m-d') ||
+        (
+            $data === $agora->format('Y-m-d') &&
+            $horario <= $agora->format('H:i')
+        )
+    )
+) {
+    http_response_code(400);
+    exit('Não é possível agendar uma aula no passado.');
+}
+
 $sql = "UPDATE agendamentos
         SET nome_aluno = ?,
             atividade = ?,
@@ -59,5 +78,5 @@ $stmt->execute([
     $id
 ]);
 
-header('Location: ../list/lista.php');
+header('Location: ../list/lista.php?sucesso=edicao');
 exit;

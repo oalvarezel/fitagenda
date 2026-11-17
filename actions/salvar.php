@@ -58,5 +58,5 @@ $stmt->execute([
     $status
 ]);
 
-header('Location: ../list/lista.php');
+header('Location: ../list/lista.php?sucesso=cadastro');
 exit;

@@ -85,12 +85,28 @@ $coresStatus = [
         <div class="d-flex justify-content-between align-items-center mb-4">
 
             <h1 class="h2">Gerenciamento de Agendamentos</h1>
-
             <a href="../pages/cadastro.php" class="btn btn-success">
                 + Novo Agendamento
             </a>
 
         </div>
+
+        <!-- Mensagens de sucesso -->
+        <?php if (($_GET['sucesso'] ?? '') === 'cadastro'): ?>
+
+        <div class="alert alert-success" role="alert">
+              Agendamento cadastrado com sucesso!
+              
+        </div>
+
+        <?php elseif (($_GET['sucesso'] ?? '') === 'edicao'): ?>
+
+         <div class="alert alert-success" role="alert">
+             Agendamento atualizado com sucesso!
+
+         </div>
+
+         <?php endif; ?>
 
         <!-- Pesquisa e filtros -->
         <form method="GET" action="lista.php" class="row g-3 mb-4">
