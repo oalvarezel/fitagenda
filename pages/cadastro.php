@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Agendamento | FitAgenda</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/forms.css">
 </head>
 
 <body>
-    <main>
+    <main class="pagina-formulario">
         <h1>Novo Agendamento</h1>
         <p>Preencha os dados para agendar uma aula esportiva.</p>
-        <form id="form-cadastro" action="../actions/salvar.php" method="POST">
+        <form id="form-cadastro" action="../actions/salvar.php" method="POST" class="formulario-agendamento">
             <div>
                 <label for="nome_aluno">Nome do aluno</label>
                 <input type="text" id="nome_aluno" name="nome_aluno" maxlength="100"

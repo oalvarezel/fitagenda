@@ -30,13 +30,16 @@ if (!$agendamento) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Agendamento | FitAgenda</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/forms.css">
 </head>
 
 <body>
-    <main>
+    <main class="pagina-formulario">
         <h1>Editar Agendamento</h1>
 
-        <form action="../actions/atualizar.php" method="POST">
+        <form action="../actions/atualizar.php" method="POST" class="formulario-agendamento">
 
             <input type="hidden"
                    name="id"
