@@ -1,18 +1,22 @@
 <?php
 
+// Importa a conexão PDO com o MySQL. __DIR__ indica a pasta deste arquivo.
 require_once __DIR__ . '/../config/database.php';
 
+// Aceita apenas POST, o método usado pelo formulário. Caso contrário, retorna HTTP 405.
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     exit('Método não permitido.');
 }
 
+// Recebe os campos enviados pelo formulário. ?? usa um valor vazio se o campo não existir; trim remove espaços nas extremidades do nome.
 $nome = trim($_POST['nome_aluno'] ?? '');
 $atividade = $_POST['atividade'] ?? '';
 $data = $_POST['data_aula'] ?? '';
 $horario = $_POST['horario'] ?? '';
 $status = $_POST['status'] ?? '';
 
+// Verifica nome obrigatório, limite de 100 caracteres e opções permitidas de atividade e status. HTTP 400 indica dados inválidos.
 if (
     $nome === '' ||
     mb_strlen($nome) > 100 ||
@@ -23,6 +27,7 @@ if (
     exit('Dados do agendamento inválidos.');
 }
 
+// Interpreta a data no formato ano-mês-dia. A comparação abaixo detecta datas inexistentes; a expressão regular verifica horas e minutos válidos.
 $dataValida = DateTimeImmutable::createFromFormat('!Y-m-d', $data);
 
 if (
@@ -34,8 +39,10 @@ if (
     exit('Data ou horário inválido.');
 }
 
+// Obtém a data e o horário atuais no fuso de Brasília para comparar com o agendamento.
 $agora = new DateTimeImmutable('now', new DateTimeZone('America/Sao_Paulo'));
 
+// Rejeita datas anteriores a hoje e horários anteriores ao atual, quando a aula é hoje.
 if (
     $data < $agora->format('Y-m-d') ||
     ($data === $agora->format('Y-m-d') && $horario < $agora->format('H:i'))
@@ -44,12 +51,15 @@ if (
     exit('Não é possível agendar aulas no passado.');
 }
 
+// INSERT cria um novo agendamento. O ID é gerado automaticamente pelo banco.
 $sql = "INSERT INTO agendamentos
         (nome_aluno, atividade, data_aula, horario, status)
         VALUES (?, ?, ?, ?, ?)";
 
+// Prepara a consulta de forma parametrizada: os dados não são concatenados diretamente ao SQL, reduzindo o risco de SQL Injection.
 $stmt = $pdo->prepare($sql);
 
+// Executa a consulta, associando os valores aos marcadores ? na ordem em que aparecem no SQL.
 $stmt->execute([
     $nome,
     $atividade,
@@ -58,5 +68,6 @@ $stmt->execute([
     $status
 ]);
 
+// Redireciona para a listagem com o parâmetro de sucesso. exit encerra o script.
 header('Location: ../list/lista.php?sucesso=cadastro');
 exit;
