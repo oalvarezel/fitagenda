@@ -24,7 +24,6 @@ try {
     echo "Conexao realizada com sucesso!\n";
     echo "Tabela agendamentos encontrada.\n";
     echo "Registros encontrados: " . $resultado->fetchColumn() . "\n";
-
 } catch (PDOException $e) {
     fwrite(STDERR, "Erro na conexao. Verifique a configuracao do banco.\n");
     exit(1);

@@ -1,10 +1,9 @@
-
 name: FitAgenda CI
 
 on:
   push:
     branches:
-      - feat/banco
+      - main
   pull_request:
     branches:
       - main
@@ -33,7 +32,7 @@ jobs:
       - name: Configurar PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: "8.2"
           extensions: pdo_mysql
 
       - name: Verificar sintaxe PHP

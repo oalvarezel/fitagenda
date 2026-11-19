@@ -7,7 +7,7 @@ require_once __DIR__ . '/../config/database.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 // Rejeita IDs ausentes, inválidos, zero ou negativos com HTTP 400.
-if (!$id || $id <=0) {
+if (!$id || $id <= 0) {
     http_response_code(400);
     exit('ID do agendamento inválido');
 }
@@ -38,8 +38,8 @@ if (!$agendamento) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Agendamento | FitAgenda</title>
     <!-- Carrega os estilos gerais e os estilos dos formulários. -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/forms.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/forms.css">
 </head>
 
 <body>
@@ -51,18 +51,18 @@ if (!$agendamento) {
 
             <!-- Campo invisível que mantém o ID do registro a atualizar. -->
             <input type="hidden"
-                   name="id"
-                   value="<?= (int) $agendamento['id'] ?>">
+                name="id"
+                value="<?= (int) $agendamento['id'] ?>">
 
             <div>
                 <!-- O value recupera o nome do banco; htmlspecialchars escapa caracteres especiais para exibição no HTML. -->
                 <label for="nome_aluno">Nome do aluno</label>
                 <input type="text"
-                       id="nome_aluno"
-                       name="nome_aluno"
-                       maxlength="100"
-                       value="<?= htmlspecialchars($agendamento['nome_aluno'], ENT_QUOTES, 'UTF-8') ?>"
-                       required>
+                    id="nome_aluno"
+                    name="nome_aluno"
+                    maxlength="100"
+                    value="<?= htmlspecialchars($agendamento['nome_aluno'], ENT_QUOTES, 'UTF-8') ?>"
+                    required>
             </div>
 
             <div>
@@ -79,20 +79,20 @@ if (!$agendamento) {
                 <!-- Preenche a data atual do agendamento no campo do tipo date. -->
                 <label for="data_aula">Data da aula</label>
                 <input type="date"
-                       id="data_aula"
-                       name="data_aula"
-                       value="<?= htmlspecialchars($agendamento['data_aula'], ENT_QUOTES, 'UTF-8') ?>"
-                       required>
+                    id="data_aula"
+                    name="data_aula"
+                    value="<?= htmlspecialchars($agendamento['data_aula'], ENT_QUOTES, 'UTF-8') ?>"
+                    required>
             </div>
 
             <div>
                 <!-- substr retira os segundos do horário armazenado, mantendo HH:MM. -->
                 <label for="horario">Horário da aula</label>
                 <input type="time"
-                       id="horario"
-                       name="horario"
-                       value="<?= htmlspecialchars(substr($agendamento['horario'], 0, 5), ENT_QUOTES, 'UTF-8') ?>"
-                       required>
+                    id="horario"
+                    name="horario"
+                    value="<?= htmlspecialchars(substr($agendamento['horario'], 0, 5), ENT_QUOTES, 'UTF-8') ?>"
+                    required>
             </div>
 
             <div>
@@ -111,4 +111,5 @@ if (!$agendamento) {
         </form>
     </main>
 </body>
+
 </html>

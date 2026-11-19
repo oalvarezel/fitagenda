@@ -1,0 +1,325 @@
+
+/* ==================================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+   ================================================== */
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configurações gerais da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+
+/* ==================================================
+   2. BANNER E PLANO DE FUNDO
+   ================================================== */
+
+/* Banner fixo ocupando toda a tela */
+.hero {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+
+    background-image: url("../images/backgrounds/banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Camada escura para destacar o painel */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 20, 25, 0.65);
+}
+
+/* Conteúdo do banner */
+.hero-content {
+    color: #fff;
+    text-align: center;
+    background: rgba(33, 177, 121, 0.85);
+
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 0;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+
+/* ==================================================
+   3. LAYOUT PRINCIPAL
+   ================================================== */
+
+/* Organiza o menu e o painel sobre o fundo */
+.container {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    min-height: 100vh;
+    padding: 28px;
+
+    background: transparent;
+}
+
+
+/* ==================================================
+   4. MENU LATERAL
+   ================================================== */
+
+/* Menu lateral com efeito de vidro */
+.sidebar {
+    position: static;
+
+    flex: 0 0 220px;
+    width: 220px;
+    min-width: 220px;
+    min-height: auto;
+    align-self: stretch;
+
+    padding: 25px 18px;
+    border-radius: 20px;
+
+    background: rgba(31, 41, 55, 0.88);
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Título do menu */
+.sidebar h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Links de navegação */
+.sidebar a {
+    display: block;
+
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+
+    color: #fff;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+/* Efeito ao passar o mouse sobre os links */
+.sidebar a:hover {
+    background: #10b981;
+}
+
+
+/* ==================================================
+   5. PAINEL PRINCIPAL
+   ================================================== */
+
+/* Painel flutuante com efeito de vidro */
+.dashboard {
+    flex: 1;
+
+    width: 100%;
+    max-width: 1100px;
+    min-width: 0;
+
+    margin: 0 auto;
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.35);
+}
+
+/* Título principal do painel */
+.dashboard-title {
+    font-size: 36px;
+    color: #059669;
+    margin-bottom: 12px;
+}
+
+/* Subtítulo do painel */
+.dashboard h2 {
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+/* Descrição do painel */
+.dashboard > p {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+
+/* ==================================================
+   6. CARDS E INDICADORES
+   ================================================== */
+
+/* Organização geral dos cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    padding: 20px;
+}
+
+/* Aparência dos cards */
+.card {
+    min-width: 180px;
+
+    padding: 20px;
+    border-radius: 12px;
+
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Títulos dos cards */
+.card h3 {
+    margin-bottom: 10px;
+}
+
+/* Valores numéricos dos indicadores */
+.card p {
+    font-size: 28px;
+    font-weight: bold;
+    color: #10b981;
+}
+
+/* Organização dos indicadores do painel */
+.dashboard .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+
+    padding: 0;
+    margin-top: 24px;
+}
+
+/* Aparência dos cards do painel */
+.dashboard .card {
+    min-width: 0;
+
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==================================================
+   7. BOTÕES E AÇÕES
+   ================================================== */
+
+/* Organização dos botões do painel */
+.dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+/* Botão principal */
+.dashboard-actions a {
+    padding: 14px 20px;
+    border-radius: 8px;
+
+    background: #10b981;
+    color: #fff;
+
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Botão secundário */
+.dashboard-actions a.secondary {
+    background: #1f2937;
+}
+
+/* Efeito ao passar o mouse sobre os botões */
+.dashboard-actions a:hover {
+    opacity: 0.9;
+}
+
+
+/* ==================================================
+   8. RESPONSIVIDADE
+   ================================================== */
+
+/* Adaptação para tablets e telas menores */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+    }
+
+    .sidebar {
+        flex: auto;
+        width: 100%;
+        min-height: auto;
+        align-self: auto;
+    }
+
+    .dashboard {
+        padding: 24px;
+    }
+}
+
+/* Adaptação para dispositivos móveis */
+@media (max-width: 768px) {
+    .sidebar {
+        min-width: 0;
+    }
+
+    .cards {
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Adaptação para celulares com telas pequenas */
+@media (max-width: 550px) {
+    .dashboard .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-title {
+        font-size: 28px;
+    }
+}

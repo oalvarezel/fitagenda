@@ -1,4 +1,3 @@
-
 <?php
 
 require_once __DIR__ . '/config/database.php';
@@ -22,7 +21,7 @@ $resumo = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Início | FitAgenda</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -36,12 +35,12 @@ $resumo = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <a href="index.php">Início</a>
             <a href="pages/cadastro.php">Novo Agendamento</a>
-            <a href="list/lista.php">Gerenciar Agendamentos</a>
+            <a href="pages/lista.php">Gerenciar Agendamentos</a>
         </nav>
 
         <main class="dashboard">
 
-        <h1 class="dashboard-title">FitAgenda</h1>
+            <h1 class="dashboard-title">FitAgenda</h1>
 
             <h2>Visão geral</h2>
             <p>Acompanhe os agendamentos do FitAgenda.</p>
@@ -75,7 +74,7 @@ $resumo = $stmt->fetch(PDO::FETCH_ASSOC);
                     + Novo Agendamento
                 </a>
 
-                <a href="list/lista.php" class="secondary">
+                <a href="pages/lista.php" class="secondary">
                     Ver Agendamentos
                 </a>
             </div>
@@ -85,4 +84,5 @@ $resumo = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
 
 </body>
+
 </html>

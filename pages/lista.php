@@ -1,4 +1,6 @@
+
 <?php
+
 // Inclui a conexão com o banco de dados fornecida pela Pessoa 4
 require_once __DIR__ . '/../config/database.php';
 
@@ -59,6 +61,7 @@ $coresStatus = [
     'concluido' => 'bg-success',
     'cancelado' => 'bg-danger'
 ];
+
 ?>
 
 <!DOCTYPE html>
@@ -73,8 +76,7 @@ $coresStatus = [
     <!-- Bootstrap temporário até o CSS oficial da Pessoa 1 -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 </head>
 
 <body class="bg-light">
@@ -85,7 +87,8 @@ $coresStatus = [
         <div class="d-flex justify-content-between align-items-center mb-4">
 
             <h1 class="h2">Gerenciamento de Agendamentos</h1>
-            <a href="../pages/cadastro.php" class="btn btn-success">
+
+            <a href="cadastro.php" class="btn btn-success">
                 + Novo Agendamento
             </a>
 
@@ -94,19 +97,17 @@ $coresStatus = [
         <!-- Mensagens de sucesso -->
         <?php if (($_GET['sucesso'] ?? '') === 'cadastro'): ?>
 
-        <div class="alert alert-success" role="alert">
-              Agendamento cadastrado com sucesso!
-              
-        </div>
+            <div class="alert alert-success" role="alert">
+                Agendamento cadastrado com sucesso!
+            </div>
 
         <?php elseif (($_GET['sucesso'] ?? '') === 'edicao'): ?>
 
-         <div class="alert alert-success" role="alert">
-             Agendamento atualizado com sucesso!
+            <div class="alert alert-success" role="alert">
+                Agendamento atualizado com sucesso!
+            </div>
 
-         </div>
-
-         <?php endif; ?>
+        <?php endif; ?>
 
         <!-- Pesquisa e filtros -->
         <form method="GET" action="lista.php" class="row g-3 mb-4">
@@ -118,8 +119,7 @@ $coresStatus = [
                     name="busca"
                     class="form-control"
                     placeholder="Pesquisar por nome do aluno..."
-                    value="<?= htmlspecialchars($busca, ENT_QUOTES, 'UTF-8') ?>"
-                >
+                    value="<?= htmlspecialchars($busca, ENT_QUOTES, 'UTF-8') ?>">
 
             </div>
 
@@ -227,29 +227,25 @@ $coresStatus = [
 
                                                 <!-- Botão de edição -->
                                                 <a
-                                                    href="../pages/editar.php?id=<?= (int) $item['id'] ?>"
-                                                    class="btn btn-sm btn-warning"
-                                                >
+                                                    href="editar.php?id=<?= (int) $item['id'] ?>"
+                                                    class="btn btn-sm btn-warning">
                                                     Editar
                                                 </a>
 
                                                 <!-- Formulário de exclusão -->
                                                 <form
-                                                    action="excluir.php"
+                                                    action="../actions/excluir.php"
                                                     method="POST"
-                                                    onsubmit="return confirm('Tem certeza que deseja excluir este agendamento?');"
-                                                >
+                                                    onsubmit="return confirm('Tem certeza que deseja excluir este agendamento?');">
 
                                                     <input
                                                         type="hidden"
                                                         name="id"
-                                                        value="<?= (int) $item['id'] ?>"
-                                                    >
+                                                        value="<?= (int) $item['id'] ?>">
 
                                                     <button
                                                         type="submit"
-                                                        class="btn btn-sm btn-danger"
-                                                    >
+                                                        class="btn btn-sm btn-danger">
                                                         Excluir
                                                     </button>
 
@@ -286,4 +282,5 @@ $coresStatus = [
     </main>
 
 </body>
+
 </html>

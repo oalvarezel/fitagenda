@@ -1,0 +1,75 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+}
+
+/* Páginas de cadastro e edição */
+
+.pagina-formulario {
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 32px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.pagina-formulario h1 {
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.pagina-formulario p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.formulario-agendamento > div {
+  margin-bottom: 20px;
+}
+
+.formulario-agendamento label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.formulario-agendamento input:focus,
+.formulario-agendamento select:focus {
+  outline: 2px solid #10b981;
+  outline-offset: 1px;
+}
+
+.formulario-agendamento button {
+  width: 100%;
+  padding: 14px;
+  background: #10b981;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.formulario-agendamento button:hover {
+  background: #059669;
+}
+
+@media (max-width: 768px) {
+  .pagina-formulario {
+    margin: 20px 12px;
+    padding: 20px;
+  }
+}
